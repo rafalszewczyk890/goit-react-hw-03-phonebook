@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import ContactForm from './ContactForm';
 
 class App extends Component {
   state = {
@@ -10,25 +11,14 @@ class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-
+  handleSubmit = contact => {
     this.setState(prevState => ({
       contacts: [
         ...prevState.contacts,
-        { id: nanoid(), name: prevState.name, number: prevState.number },
+        { id: contact.id, name: contact.name, number: contact.number },
       ],
-      name: '',
-      number: '',
     }));
   };
 
@@ -37,7 +27,8 @@ class App extends Component {
     return (
       <>
         <h1>Phonebook</h1>
-        <form>
+        <ContactForm handleSubmit={this.handleSubmit} />
+        {/* <form>
           <label>Name</label>
           <input
             type="text"
@@ -61,7 +52,7 @@ class App extends Component {
           <button type="submit" onClick={this.handleSubmit}>
             Add contact
           </button>
-        </form>
+        </form> */}
         <h2>Contacts</h2>
         <p>Find contacts by name</p>
         <input
