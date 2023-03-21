@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm';
+import Filter from './Filter';
 
 class App extends Component {
   state = {
@@ -20,6 +21,12 @@ class App extends Component {
         { id: contact.id, name: contact.name, number: contact.number },
       ],
     }));
+  };
+
+  onFilterChange = value => {
+    this.setState({
+      filter: value,
+    });
   };
 
   render() {
@@ -54,13 +61,7 @@ class App extends Component {
           </button>
         </form> */}
         <h2>Contacts</h2>
-        <p>Find contacts by name</p>
-        <input
-          type="text"
-          onChange={this.handleChange}
-          name="filter"
-          title="Contacts will be filtered by this input value"
-        ></input>
+        <Filter onChange={this.onFilterChange} />
         <ul>
           {contacts.map(contact => {
             if (
