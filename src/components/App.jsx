@@ -19,12 +19,6 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
-  handleFilterChange = event => {
-    this.setState({
-      filter: event.target.value,
-    });
-  };
-
   handleSubmit = event => {
     event.preventDefault();
 
