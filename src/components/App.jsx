@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import ContactForm from './ContactForm';
 
 class App extends Component {
   state = {
@@ -16,28 +15,8 @@ class App extends Component {
   };
 
   handleChange = event => {
-    switch (event.target.name) {
-      case 'name':
-        this.setState({
-          name: event.target.value,
-        });
-        break;
-
-      case 'number':
-        this.setState({
-          number: event.target.value,
-        });
-        break;
-
-      case 'filter':
-        this.setState({
-          filter: event.target.value,
-        });
-        break;
-
-      default:
-        console.log('default');
-    }
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   handleFilterChange = event => {
@@ -60,7 +39,7 @@ class App extends Component {
   };
 
   render() {
-    const { contacts } = this.state;
+    const { contacts, name, number } = this.state;
     return (
       <>
         <h1>Phonebook</h1>
@@ -72,7 +51,7 @@ class App extends Component {
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            value={this.state.name}
+            value={name}
             required
           />
           <label>Phone</label>
@@ -82,7 +61,7 @@ class App extends Component {
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            value={this.state.number}
+            value={number}
             required
           />
           <button type="submit" onClick={this.handleSubmit}>
