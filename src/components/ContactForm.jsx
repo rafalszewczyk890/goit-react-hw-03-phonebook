@@ -22,6 +22,11 @@ class ContactForm extends Component {
       number: this.state.number,
     };
 
+    this.setState({
+      name: '',
+      number: '',
+    });
+
     if (contacts.find(listContact => listContact.name === contact.name)) {
       alert(`${contact.name} is already in contacts.`);
       return;
