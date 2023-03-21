@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './ContactList';
@@ -35,7 +34,7 @@ class App extends Component {
     return (
       <>
         <h1>Phonebook</h1>
-        <ContactForm handleSubmit={this.handleSubmit} />
+        <ContactForm handleSubmit={this.handleSubmit} contacts={contacts} />
         <h2>Contacts</h2>
         <Filter onChange={this.onFilterChange} />
         <ContactList contacts={contacts} filter={filter} />

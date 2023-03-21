@@ -14,12 +14,17 @@ class ContactForm extends Component {
   };
 
   onSubmit = event => {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, contacts } = this.props;
     const contact = {
       id: nanoid(),
       name: this.state.name,
       number: this.state.number,
     };
+
+    if (contacts.find(listContact => listContact.name === contact.name)) {
+      alert(`${contact.name} is already in contacts.`);
+      return;
+    }
     handleSubmit(contact);
   };
 
