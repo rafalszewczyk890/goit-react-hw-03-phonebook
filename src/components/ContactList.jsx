@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import css from './ContactList.module.css';
 
 class ContactList extends Component {
   render() {
@@ -12,6 +13,7 @@ class ContactList extends Component {
               <li key={contact.id}>
                 {contact.name}: {contact.number}
                 <button
+                  className={css.deletebutton}
                   key={contact.id}
                   type="button"
                   onClick={() => onDelete(contact.id)}

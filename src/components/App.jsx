@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './ContactList';
+import css from './App.module.css';
 
 class App extends Component {
   state = {
@@ -34,7 +35,7 @@ class App extends Component {
   render() {
     const { contacts, filter } = this.state;
     return (
-      <>
+      <div className={css.container}>
         <h1>Phonebook</h1>
         <ContactForm handleSubmit={this.handleSubmit} contacts={contacts} />
         <h2>Contacts</h2>
@@ -44,7 +45,7 @@ class App extends Component {
           filter={filter}
           onDelete={this.handleDelete}
         />
-      </>
+      </div>
     );
   }
 }

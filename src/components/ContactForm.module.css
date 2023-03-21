@@ -1,0 +1,16 @@
+.contactform {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.input {
+  border-radius: 5px;
+  margin: 5px 0 5px 0;
+  padding: 3px;
+}
+
+.submit {
+  border-radius: 5px;
+  padding: 5px;
+}
