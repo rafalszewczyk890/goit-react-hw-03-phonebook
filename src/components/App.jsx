@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
+import ContactList from './ContactList';
 
 class App extends Component {
   state = {
@@ -30,53 +31,14 @@ class App extends Component {
   };
 
   render() {
-    const { contacts, name, number } = this.state;
+    const { contacts, filter } = this.state;
     return (
       <>
         <h1>Phonebook</h1>
         <ContactForm handleSubmit={this.handleSubmit} />
-        {/* <form>
-          <label>Name</label>
-          <input
-            type="text"
-            onChange={this.handleChange}
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            value={name}
-            required
-          />
-          <label>Phone</label>
-          <input
-            type="tel"
-            onChange={this.handleChange}
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            value={number}
-            required
-          />
-          <button type="submit" onClick={this.handleSubmit}>
-            Add contact
-          </button>
-        </form> */}
         <h2>Contacts</h2>
         <Filter onChange={this.onFilterChange} />
-        <ul>
-          {contacts.map(contact => {
-            if (
-              contact.name
-                .toLowerCase()
-                .includes(this.state.filter.toLowerCase())
-            ) {
-              return (
-                <li key={contact.id}>
-                  {contact.name}: {contact.number}
-                </li>
-              );
-            }
-          })}
-        </ul>
+        <ContactList contacts={contacts} filter={filter} />
       </>
     );
   }
