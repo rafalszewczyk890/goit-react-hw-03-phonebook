@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Filter extends Component {
   filterChange = event => {
@@ -20,5 +21,9 @@ class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  onChange: PropTypes.func,
+};
 
 export default Filter;

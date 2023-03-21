@@ -1,10 +1,7 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ContactList extends Component {
-  //   handleDelete = id => {
-  //     this.props.onDelete(id);
-  //   };
-
   render() {
     const { contacts, filter, onDelete } = this.props;
     return (
@@ -29,5 +26,9 @@ class ContactList extends Component {
     );
   }
 }
+
+ContactList.propTypes = {
+  onDelete: PropTypes.func,
+};
 
 export default ContactList;

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
   state = {
@@ -59,5 +60,11 @@ class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  number: PropTypes.string,
+};
 
 export default ContactForm;
