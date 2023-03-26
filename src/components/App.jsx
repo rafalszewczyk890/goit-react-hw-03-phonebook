@@ -40,9 +40,13 @@ class App extends Component {
   };
 
   handleDelete = id => {
+    const filteredContacts = this.state.contacts.filter(
+      contact => contact.id !== id
+    );
     this.setState({
-      contacts: this.state.contacts.filter(contact => contact.id !== id),
+      contacts: filteredContacts,
     });
+    localStorage.setItem('contacts', JSON.stringify(filteredContacts));
   };
 
   render() {
