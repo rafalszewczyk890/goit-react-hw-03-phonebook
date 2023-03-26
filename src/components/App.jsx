@@ -28,9 +28,10 @@ class App extends Component {
       ],
     }));
 
-    const storageContacts = JSON.parse(localStorage.getItem('contacts')) || [];
-    storageContacts.push(contact);
-    localStorage.setItem('contacts', JSON.stringify(storageContacts));
+    const contactsFromStorageParsed =
+      JSON.parse(localStorage.getItem('contacts')) || [];
+    contactsFromStorageParsed.push(contact);
+    localStorage.setItem('contacts', JSON.stringify(contactsFromStorageParsed));
   };
 
   onFilterChange = value => {
