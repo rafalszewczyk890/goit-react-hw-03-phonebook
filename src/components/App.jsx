@@ -74,5 +74,3 @@ App.propTypes = {
 };
 
 export default App;
-
-// test
