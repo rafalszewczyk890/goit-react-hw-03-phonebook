@@ -11,6 +11,15 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contactsFromStorage = localStorage.getItem('contacts');
+    if (contactsFromStorage) {
+      this.setState({
+        contacts: JSON.parse(contactsFromStorage),
+      });
+    }
+  }
+
   handleSubmit = contact => {
     this.setState(prevState => ({
       contacts: [
@@ -18,6 +27,10 @@ class App extends Component {
         { id: contact.id, name: contact.name, number: contact.number },
       ],
     }));
+
+    const storageContacts = JSON.parse(localStorage.getItem('contacts')) || [];
+    storageContacts.push(contact);
+    localStorage.setItem('contacts', JSON.stringify(storageContacts));
   };
 
   onFilterChange = value => {
